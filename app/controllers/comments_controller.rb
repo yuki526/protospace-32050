@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to prototype_path(@prototype)
     else  
+      @comments = @prototype.comments.includes(:user)
       render "prototypes/show"
     end
 
